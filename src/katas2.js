@@ -1,64 +1,61 @@
-// comece a criar a sua função add na linha abaixo
-
-function add(a, b){
-    return a + b;
+function add(num1, num2) {
+    return num1 + num2;
 }
-// descomente a linha seguinte para testar sua função
- console.assert(add(3, 5) === 8, 'A função add não está funcionando como esperado');
+add(3, 5);
+console.assert(add(3, 5) === 8, 'A função add não está funcionando como esperado');
 
+function multiply(num1, num2) {
+    let resultado = 0;
 
-// comece a criar a sua função multiply na linha abaixo
-
-function multiply(a,b){
-    return a * b;
-
+    for (let contador = 0; contador < num2; contador++) {
+        resultado = add(resultado, num1)
+    }
+    return resultado
 }
+multiply(4, 6);
 
-// descomente a linha seguinte para testar sua função
 console.assert(multiply(4, 6) === 24, 'A função multiply não está funcionando como esperado');
 
-
-// comece a criar a sua função power na linha abaixo
-
-function power(x, n){
-    return x ** n;
+function power(x, n) {
+    let resultado = x
+    for (let contador = 1; contador < n; contador++) {
+        resultado = multiply(resultado, x)
+    }
+    return resultado;
 }
-// descomente a linha seguinte para testar sua função
+power(3, 4)
+
 console.assert(power(3, 4) === 81, 'A função power não está funcionando como esperado');
 
-
-// comece a criar a sua função factorial na linha abaixo
-function factorial(valor) {
- 
-    if(valor < 0) {
-
-      return 'Valor deve ser maior ou igual a zero';
-    
-    } else if ( (valor == 0) || (valor == 1) ) {
-
-      return 1;
-     
-    } else {
-
-      var fator = 1;
-      for( num = valor; num > 1; num--) {
-        fator = fator * num;
-      }
-      return fator;
-    } 
-
+function factorial(number) {
+    let resultado = 1;
+    for (let contador = number; contador > 1; contador--) {
+        resultado = multiply(resultado, contador)
+    }
+    return resultado;
 }
 
-// descomente a linha seguinte para testar sua função
+factorial(5)
+
 console.assert(factorial(5) === 120, 'A função factorial não está funcionando como esperado');
 
+function fibonacci(n) {
+    let resultado = 0;
+    let numbFib = [];
+    numbFib.push(0, 1, 1);
 
-/**
- * BONUS (aviso: o grau de dificuldade é bem maior !!!)
- */
+    for (let contador = 3; contador <= n; contador++) {
+        let num1 = contador - 2
+        let num2 = contador - 1
+        let pos1 = numbFib[num1]
+        let pos2 = numbFib[num2]
 
-// crie a função fibonacci
+        resultado = add(pos1, pos2)
+        numbFib.push(resultado)
 
+    }
+    return numbFib[n]
+}
+fibonacci(7)
 
-// descomente a linha seguinte para testar sua função
-// console.assert(fibonacci(8) === 13, 'A função fibonacci não está funcionando como esperado');
+console.assert(fibonacci(7) === 13, 'A função fibonacci não está funcionando como esperado');
